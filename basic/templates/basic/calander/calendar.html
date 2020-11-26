@@ -1,0 +1,16 @@
+{% extends 'basic/base.html' %}
+
+{% block content %}
+ <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+<div class="clearfix container">
+    
+	<a class="btn btn-info right mr-2" href="{% url 'calendarapp:calendar' %}?{{ next_month }} "> Next Month >> </a>
+    <a class="btn btn-info right mr-2" href="{% url 'calendarapp:calendar' %}?{{ prev_month }}"> << Previous Month </a>
+    <a class="btn btn-info right mr-2" href="{% url 'calendarapp:event_new' %}"> + New Event </a>
+</div>
+<div style="color: blueviolet;" class='container'> 
+    {{ calendar}}
+</div>
+</main>
+{% include 'basic/calander/calanderStyle.html' %}
+{% endblock %}
