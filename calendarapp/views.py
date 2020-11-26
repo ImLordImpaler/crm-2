@@ -42,7 +42,7 @@ def next_month(d):
     return month
 
 class CalendarView(LoginRequiredMixin, generic.ListView):
-    login_url = 'signup'
+    login_url = 'loginPage'
     model = Event
     context_object_name = 'abc'
     
