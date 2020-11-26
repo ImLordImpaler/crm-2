@@ -39,7 +39,7 @@ def register(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('dashboard')
+            return redirect('calendarapp:index')
         else:
             return HttpResponse("Nai hua bhau")
     else :

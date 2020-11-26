@@ -16,6 +16,7 @@ from django.urls import reverse_lazy
 from .models import *
 from .utils import Calendar
 from .forms import EventForm, AddMemberForm
+from basic.models import Enquiry , Product
 
 @login_required(login_url='signup')
 def index(request):
@@ -43,8 +44,13 @@ def next_month(d):
 class CalendarView(LoginRequiredMixin, generic.ListView):
     login_url = 'signup'
     model = Event
+    context_object_name = 'abc'
+    
     template_name = 'basic/calander/calendar.html'
 
+    def get_queryset(self):
+        queryset = {'enquiry' :Enquiry.objects.count() }
+        return queryset
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))

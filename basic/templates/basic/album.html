@@ -2,20 +2,25 @@
 
 {% block content %}
 
- <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
-  <section class="jumbotron text-center commonContainer">
+
+  <section class="jumbotron text-center commonContainer" style="background-color: #4F73DF;">
     <div class="container ">
-      <h1>Stock Section</h1>
-      <p class="lead text-muted">यह एल्बम वाला भाग है</p>
+      <h1 class='jumText'>Stock Section</h1>
+      <p class="lead text-muted jumText">यह एल्बम वाला भाग है</p>
       <p>
       
-        <a href="#" class="btn btn-primary my-2">Add Another Product</a>
-        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        <a href="#" class="btn btn-primary my-2 jumText">Add Another Product</a>
+        <a href="#" class="btn btn-secondary my-2 jumText">Secondary action</a>
       </p>
     </div>
   </section>
-
+  <style>
+  .jumText{
+   color: white;
+   font-color: white;
+  }
+  </style>
   <div class="album py-5 bg-light commonContainer" >
     <div class="container" style=>
 
@@ -53,7 +58,7 @@
     <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
   </div>
 </footer>
-</main>
+
 
 <style>
 .albumImage{

@@ -1,76 +1,96 @@
-<!doctype html>
-{% load static %}
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+{% load static %}
+<head>
+
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>Signin Template · Bootstrap</title>
+    <meta name="author" content="">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+    <title>RachitSaxena</title>
 
-    <!-- Bootstrap core CSS -->
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'frontend/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+    <!-- Custom styles for this template-->
+    <link href="{% static 'frontend/css/sb-admin-2.min.css' %}" rel="stylesheet">
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      body{
-        background-image: url(https://wallpapercave.com/wp/wp6771310.jpg)
-          
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="{% static 'signin.css' %}" rel="stylesheet">
-  </head>
+</head>
 
-  <body class="text-center">
-    
-    <form class="form-signin formArea" action='' method='POST'>{% csrf_token %}
-   <img class="my-4 " src="https://cdn1.iconfinder.com/data/icons/symbols-symbols-2-add-on-vol-2/48/v-36-512.png" alt="" width="100" height="100">
- <br><br>
-  <label for="inputEmail" class="sr-only">Username</label>
-  <input type="text" name='uname'id="inputEmail" class="form-control" placeholder="Username" required autofocus>
-  <br>
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password"name='pwd' id="inputPassword" class="form-control" placeholder="Password" required>
-  <div class="checkbox mb-3">
-    
-  </div>
-  <button class="btn btn-lg btn-dark btn-block " type="submit">Sign in</button> <br>
-  <label>
-      <a href="{% url 'register' %}" class='btn btn-outline-dark ' >Register?</a>
-    </label>
-  
-</form>
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">RachitSA</h1>
+                                    </div>
+                                    <form class="user" action='' method="POST"> {% csrf_token %}
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                name='uname'
+                                                placeholder="Enter Email Address...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                            name='pwd'
+                                                id="exampleInputPassword" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            
+                                        </div>
+                                        <button type='submit' class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </button>
+                                        
+                                        
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="register.html">Create an Account!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'frontend/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'frontend/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'frontend/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'frontend/js/sb-admin-2.min.js' %}"></script>
+
 </body>
 
-<style>
-.formArea{
-  border: 1px solid black;
-  box-shadow: 2px 1px;
-  border-radius: 50px 20px;
-  background-color: white;
-}
-
-.firstHeading{
-    font-color:
-    
-}
-</style>
 </html>
