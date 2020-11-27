@@ -35,11 +35,11 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block sec"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">RachitSA</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">RachitSaxena</h1>
                                     </div>
                                     <form class="user" action='' method="POST"> {% csrf_token %}
                                         <div class="form-group">
@@ -64,11 +64,9 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <p class="btn btn-sm btn-outline-primary" >Designed By RachitSaxena</p>
                                     </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -80,7 +78,13 @@
         </div>
 
     </div>
-
+    <style>
+    .sec{
+        background-image : url(https://wallpapercave.com/wp/wp6771310.jpg);
+        background-position:center;
+        background-size:cover;
+    }
+    </style>
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'frontend/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'frontend/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

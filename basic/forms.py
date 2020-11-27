@@ -1,7 +1,22 @@
 from django.forms import ModelForm
-from basic.models import Product , Enquiry , Employee
+from basic.models import Product , Enquiry , Employee , Client , Bill , Slip
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
+
+class NewSlip(ModelForm):
+    class Meta:
+        model = Slip
+        fields = '__all__'
+        
+class NewBill(ModelForm):
+    class Meta: 
+        model = Bill
+        fields = '__all__'
+class NewClient(ModelForm):
+    class Meta:
+        model = Client
+        fields = '__all__'
 
 class SignUpForm(UserCreationForm):
    

@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse
-from .models import Enquiry , Product , Employee
-from .forms import ProductForm , EnquiryForm , EmployeForm , SignUpForm
+from .models import Enquiry , Product , Employee , Client , Bill , Slip
+from .forms import ProductForm , EnquiryForm , EmployeForm , SignUpForm , NewBill , NewClient , NewSlip
 from django.contrib.auth import login , logout , authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -107,6 +107,17 @@ def enquiryUpdate(request , pk):
     }
     return render(request , 'basic/enquiryForm.html' , params)
 
+@login_required(login_url='loginPage')
+def deleteEnquiry(request , pk):
+    pro = Enquiry.objects.get(id=pk)
+    if request.method=='POST':
+        pro.delete()
+        return redirect('enquiry')
+    params = {
+        'item': pro
+    }
+    return render(request , 'basic/deleteEnquiry.html' , params )
+
 
 @login_required(login_url='loginPage')
 def product(request):
@@ -189,10 +200,52 @@ def stock(request):
     return render(request , 'basic/album.html' , params)
 @login_required(login_url='loginPage')
 def clients(request):
+    cli = Client.objects.all()
+    form = NewClient()
+    if request.method=='POST':
+        form = NewClient(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('calendarapp:calendar')
+        else :
+            return render(request , 'basic/404.html')
+    else : 
+        form = NewClient()
+        
     params = {
-
+        'pro' : cli,
+        'form' : form
     }
-    return render(request , 'basic/clients.html' , params)
+    return render(request , 'basic/forms/newClient.html' , params)
+
+def clientUpdate(request , pk):
+    enq = Client.objects.get(id = pk)
+    
+    if request.method == 'POST':
+        form = NewClient(request.POST , instance=enq)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+        else:
+            return HttpResponse('not found')
+    else:
+        form = NewClient(instance= enq)
+    params = {
+        'form' : form
+    }
+    return render(request , 'basic/forms/updateClient.html' , params)
+def deleteClient(request , pk):
+    cli = Client.objects.get(id=pk)
+    if request.method == 'POST':
+        cli.delete()
+        return redirect('clients')
+    params = {
+        'item': cli
+    }
+    return render(request , 'basic/forms/deleteClient.html' , params)
+
+
+
 @login_required(login_url='loginPage')
 def deleteEmployee(request , pk):
     Emp = Employee.objects.get(id=pk)
@@ -216,13 +269,70 @@ def deleteProduct(request , pk):
         'item': pro
     }
     return render(request , 'basic/deleteProduct.html' , params)
-@login_required(login_url='loginPage')
-def deleteEnquiry(request , pk):
-    pro = Enquiry.objects.get(id=pk)
+
+
+def serviceSlip(request):
+    cli = Slip.objects.all()
+    form = NewSlip()
     if request.method=='POST':
-        pro.delete()
-        return redirect('enquiry')
+        form = NewSlip(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('serviceSlip')
+        else :
+            return render(request , 'basic/404.html')
+    else : 
+        form = NewSlip()
+        
     params = {
-        'item': pro
+        'pro' : cli,
+        'form' : form
     }
-    return render(request , 'basic/deleteEnquiry.html' , params )
+    return render(request , 'basic/forms/serviceSlip.html' , params)
+
+def updateSlip(request , pk):
+    slip = Slip.objects.get(id=pk)
+    if request.method == 'POST':
+        form = NewSlip(request.POST , instance=slip)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+        else:
+            return HttpResponse('not found')
+    else:
+        form = NewSlip(instance= slip)
+    params = {
+        'form': form,
+        'pro' : slip
+    }
+
+    return render(request , 'basic/forms/updateSlip.html' , params)
+
+def deleteSlip(request , pk):
+    slip = Slip.objects.get(id=pk)
+    if request.method == 'POST':
+        slip.delete()
+        return redirect('calendarapp:calendar')
+    params = {
+        'item' : slip
+    }
+    return render(request , 'basic/forms/deleteSlip.html' , params)
+
+def billing(request):
+    bill = Bill.objects.all()
+    form = NewBill()
+    if request.method == 'POST':
+        form = NewBill(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('billing')
+        else:
+            return render(request , 'basic/404.html')
+    else: 
+        form = NewBill()
+
+    params = {
+        'pro': bill,
+            'form' : form
+    }
+    return render(request , 'basic/forms/billing.html', params)

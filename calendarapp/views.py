@@ -48,9 +48,6 @@ class CalendarView(LoginRequiredMixin, generic.ListView):
     
     template_name = 'basic/calander/calendar.html'
 
-    def get_queryset(self):
-        queryset = {'enquiry' :Enquiry.objects.count() }
-        return queryset
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
@@ -60,6 +57,10 @@ class CalendarView(LoginRequiredMixin, generic.ListView):
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
         return context
+    def get_queryset(self):
+        queryset = {'enquiry' :Enquiry.objects.count() }
+        print(queryset)
+        return queryset
 
 @login_required(login_url='signup')
 def create_event(request):    
