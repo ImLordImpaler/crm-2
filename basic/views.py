@@ -21,7 +21,7 @@ def loginPage(request):
 
         if user is not None:
             login(request , user)
-            return redirect('dashboard')
+            return redirect('calendarapp:calendar')
         else:
             return HttpResponse("Kon hai bai tu")
     else :
